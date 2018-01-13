@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
+using System.Globalization;
 
 namespace MS_CIT
 {
@@ -47,10 +49,12 @@ namespace MS_CIT
                     StreamReader reader = new StreamReader(ff);
                     DateTime date = Convert.ToDateTime(CryptorEngine.Decrypt(reader.ReadLine(), true));
                     date = date.AddYears(1);
-                    DateTime Sysdate = Convert.ToDateTime(System.DateTime.Now.ToString("dd/MM/yyyy"));
+                    DateTime Sysdate = DateTime.UtcNow.Date;
+                    ff.Close();
                     if (date < Sysdate)
                     {
                         MessageBox.Show("Your Licence was Expired");
+                        File.Delete("C:\\MS-CIT\\FirstRun\\DoNotDelete.txt");
                     }
                     else
                     {
@@ -72,14 +76,14 @@ namespace MS_CIT
                 }
                 catch (System.FormatException rr)
                 {
-                    MessageBox.Show("Application can't run because system date was changed manually\n Please set it as automatic(or internet time )");
+                    MessageBox.Show("Application can't run because system date was changed \n Please set it as automatic(or internet time )");
                 }
                 catch (Exception tt)
                 {
                     MessageBox.Show(tt.Message);
                 }
-               
-                
+
+
             }
             else
             {

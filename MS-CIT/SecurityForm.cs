@@ -5,6 +5,7 @@ using MetroFramework.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
+using System.Threading;
 
 namespace MS_CIT
 {
@@ -15,14 +16,18 @@ namespace MS_CIT
         public SecurityForm()
         {
             InitializeComponent();
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.WorkerReportsProgress = true;
         }
         private void SecurityForm_Load(object sender, EventArgs e)
         {
-            lblWait.Visible = false;
+            
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            lblWait.Visible = true;
+            backgroundWorker1.RunWorkerAsync();
+           
             if (new Regex("(LINKER)\\-([0-9]{2})\\-(IT)\\-([0-5]{2})\\-(SOLUTIONS)\\-([0-9]{5})").IsMatch(txtKey.Text))
             {
                 string serverIp = "185.224.137.8";
@@ -60,7 +65,7 @@ namespace MS_CIT
                             writer.Close();
                         }
                         SECURITY_CHECK = true;
-                        this.Dispose();
+                        Dispose();                        
                     }
                     else
                     {
@@ -84,14 +89,31 @@ namespace MS_CIT
             else
             {
                 MessageBox.Show("Incorrect Key", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SECURITY_CHECK = false;
-                lblWait.Visible = false;
+                SECURITY_CHECK = false;                
             }
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            for (int i = 0; i < 100; i++)
+            {                
+                backgroundWorker1.ReportProgress(i);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            ProgressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void ProgressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

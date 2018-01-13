@@ -11,13 +11,26 @@ using MetroFramework.Fonts;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Drawing.Printing;
 
 namespace MS_CIT
 {
     public partial class Pay_Fees : MetroForm
     {
+        //
+        PrintDocument pdoc = null;
+        int ticketNo;
+        DateTime TicketDate;
+        String Source, Destination, DrawnBy;
+        float Amount;
+        //
+
+            string  strAmount = "",strPaidBy = "",
+                    strPaymentDesc = "",
+                    strReceivedBy = "",
+                    strPaymentMethod = "";
         int id = 0;
-        string Name = null;
+       // string Name = null;
         Home home1 = (Home)Application.OpenForms["Home"];
         MySqlDataAdapter mySqlDataAdapter;
         MySqlCommand mycommand;
@@ -148,6 +161,11 @@ namespace MS_CIT
                 }
                 finally
                 {
+                    strAmount = txtAmount.Text;
+                    strPaidBy = txtPaidBy.Text;
+                    strPaymentDesc = txtPaymentDesc.Text;
+                    strReceivedBy = txtReceivedBy.Text;
+                    strPaymentMethod = comboPaymentMethod.Text;
                     txtAmount.Text = "";
                     txtPaidBy.Text = "";
                     txtPaymentDesc.Text = "";
@@ -155,6 +173,9 @@ namespace MS_CIT
                     comboPaymentMethod.Text = "";
                 }
             }
+            // printing logic
+            print();
+
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -180,6 +201,84 @@ namespace MS_CIT
                 this.lblMarquee.Location = new System.Drawing.Point(xPos, 472);
                 xPos++;
             }
+        }
+
+        public void print()  
+        {
+            PrintDialog pd = new PrintDialog();
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            Font font = new Font("Courier New", 15);
+
+
+            PaperSize psize = new PaperSize("Custom", 100, 200);
+            //ps.DefaultPageSettings.PaperSize = psize;
+
+            pd.Document = printDocument1;
+            pd.Document.DefaultPageSettings.PaperSize = psize;
+            //pdoc.DefaultPageSettings.PaperSize.Height =320;
+            printDocument1.DefaultPageSettings.PaperSize.Height = 820;
+
+            printDocument1.DefaultPageSettings.PaperSize.Width = 520;
+
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+
+            DialogResult result = pd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                PrintPreviewDialog pp = new PrintPreviewDialog();
+                pp.Document = printDocument1;
+                result = pp.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+            Font font = new Font("Courier New", 10);
+            float fontHeight = font.GetHeight();
+            int startX = 50;
+            int startY = 55;
+            int Offset = 40;
+            graphics.DrawString("School Name", new Font("Courier New", 14),
+                                new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+            graphics.DrawString("Ticket No:" + this.strAmount,
+                     new Font("Courier New", 14),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+            graphics.DrawString("Ticket Date :" + this.strAmount,
+                     new Font("Courier New", 12),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+            String underLine = "------------------------------------------";
+            graphics.DrawString(underLine, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            String Source = strAmount;
+            graphics.DrawString("From " + Source + " To " + Destination, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            String Grosstotal = "Total Amount to Pay = " + strAmount;
+
+            Offset = Offset + 20;
+            underLine = "------------------------------------------";
+            graphics.DrawString(underLine, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+
+            graphics.DrawString(Grosstotal, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+            String DrawnBy = strAmount;
+            graphics.DrawString("Conductor - " + DrawnBy, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
         }
     }
 }

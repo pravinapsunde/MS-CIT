@@ -32,7 +32,8 @@
             this.txtKey = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.lblWait = new MetroFramework.Controls.MetroLabel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -96,25 +97,25 @@
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
-            // lblWait
+            // backgroundWorker1
             // 
-            this.lblWait.AutoSize = true;
-            this.lblWait.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblWait.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.lblWait.Location = new System.Drawing.Point(5, 123);
-            this.lblWait.Name = "lblWait";
-            this.lblWait.Size = new System.Drawing.Size(104, 19);
-            this.lblWait.TabIndex = 8;
-            this.lblWait.Text = "please wait.....";
-            this.lblWait.UseCustomBackColor = true;
-            this.lblWait.UseCustomForeColor = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            // 
+            // ProgressBar1
+            // 
+            this.ProgressBar1.Location = new System.Drawing.Point(11, 123);
+            this.ProgressBar1.Name = "ProgressBar1";
+            this.ProgressBar1.Size = new System.Drawing.Size(100, 15);
+            this.ProgressBar1.TabIndex = 9;
+            this.ProgressBar1.Click += new System.EventHandler(this.ProgressBar1_Click);
             // 
             // SecurityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 167);
-            this.Controls.Add(this.lblWait);
+            this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.txtKey);
@@ -133,6 +134,7 @@
         private MetroFramework.Controls.MetroTextBox txtKey;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroLabel lblWait;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private MetroFramework.Controls.MetroProgressBar ProgressBar1;
     }
 }
