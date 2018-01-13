@@ -1,0 +1,67 @@
+use tutiondb;
+ 
+CREATE TABLE IF NOT EXISTS `student`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `f_name` varchar(25) DEFAULT NULL,
+  `m_name` varchar(25) DEFAULT NULL,
+  `s_name` varchar(25) DEFAULT NULL,
+  `s_address` varchar(255) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `p_occupation` varchar(255) DEFAULT NULL,
+  `student_mob` varchar(10) DEFAULT NULL,
+  `parent_mob` varchar(10) DEFAULT NULL,
+  `dateofbirth` varchar(10) DEFAULT NULL,
+  `college_name` varchar(255) DEFAULT NULL,
+  `course` varchar(25) DEFAULT NULL,
+  `course_fee` varchar(20) DEFAULT NULL,
+  `admission_date` varchar(10) DEFAULT NULL,
+  `unpaid_fee` varchar(20) DEFAULT NULL,
+  `paid_fee` varchar(25) DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+
+
+ CREATE TABLE IF NOT EXISTS `expense_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `expense_type` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `feestruct` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `course` varchar(20) NOT NULL,
+  `course_fee` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+ CREATE TABLE IF NOT EXISTS `office_expenses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `expense_type` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL,
+  `payment_descrition` varchar(255) DEFAULT NULL,
+  `paid_by` varchar(255) DEFAULT NULL,
+  `received_by` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `student_fees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) NOT NULL,
+  `payment_date` varchar(255) DEFAULT NULL,
+  `installment_no` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL,
+  `payment_desc` varchar(255) DEFAULT NULL,
+  `paid_by` varchar(255) DEFAULT NULL,
+  `received_by` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
