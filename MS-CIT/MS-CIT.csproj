@@ -117,6 +117,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBatches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBatches.Designer.cs">
+      <DependentUpon>AddBatches.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="AddBatches.resx">
+      <DependentUpon>AddBatches.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +370,8 @@
   <ItemGroup>
     <Content Include="if_computer_1055084.ico" />
     <Content Include="if_student_icon_1741314.ico" />
+    <None Include="Resources\if_MySpace_131603.png" />
+    <None Include="Resources\BAtches.bmp" />
     <None Include="Resources\if_Money-Graph_379375.png" />
   </ItemGroup>
   <ItemGroup>

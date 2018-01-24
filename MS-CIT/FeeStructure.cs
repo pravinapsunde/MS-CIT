@@ -54,37 +54,10 @@ namespace MS_CIT
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtCourseName.Text == "")
-            {
-                errorProvider1.SetError(txtCourseName, "Enter Course Name");
-            }
-            else if (txtCourseFees.Text == "" || !new Regex("^[-+]?\\d+(\\.\\d+)?$").IsMatch(txtCourseFees.Text))
-            {
-                errorProvider1.SetError(txtCourseFees, "Enter valid amount");
-            }
-            else
-            {
-                try
-                {
-                    String query = "insert into feestruct(course,course_fee) values('" + txtCourseName.Text + "','" + txtCourseFees.Text + "');";
-                    MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
-                    mycommand.ExecuteNonQuery();
-                    refreshDataGridview();
-                    MessageBox.Show("Course/Class Added successfully..!");
-                    txtCourseFees.Text = "";
-                    txtCourseName.Text = "";
-                    comboBoxCourses.Items.Clear();
-                    addComboItem();
-
-                }
-                catch (Exception ee)
-                {
-                    MessageBox.Show(ee.Message);
-                }
-            }
+           
         }
         public void addComboItem()
-        {
+        {        
             string query2 = "select course from feestruct;";
             MySqlCommand cmd;
             cmd = new MySqlCommand(query2, Utility.GetConnection());
@@ -96,6 +69,7 @@ namespace MS_CIT
                 for (int i = 0; i < row.ItemArray.Length; i++)
                 {
                     comboBoxCourses.Items.Add(row.ItemArray[0].ToString());
+                    comboBoxCourses.SelectedItem = "";
                 }
             }
         }
@@ -109,34 +83,7 @@ namespace MS_CIT
         }
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
-            if (comboBoxCourses.Text != "")
-            {
-                DialogResult dialogResult = MessageBox.Show("Sure to Remove Course ?", "Remove Course From Database", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    try
-                    {
-                        String query = "delete from feestruct where course='" + comboBoxCourses.SelectedItem + "';";
-                        MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
-                        mycommand.ExecuteNonQuery();
-                        MessageBox.Show("Course Deleted successfully..!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        comboBoxCourses.Items.Clear();
-                        refreshDataGridview();
-                        addComboItem();
-                    }
-                    catch (Exception d)
-                    {
-                        MessageBox.Show(d.Message);
-                    }
-                }
-                else if (dialogResult == DialogResult.No)
-                {                        
-                }                    
-            }
-            else
-            {
-                MessageBox.Show("Select Course", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void txtCourseName_TextChanged(object sender, EventArgs e)
@@ -172,6 +119,70 @@ namespace MS_CIT
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            if (txtCourseName.Text == "")
+            {
+                errorProvider1.SetError(txtCourseName, "Enter Course Name");
+            }
+            else if (txtCourseFees.Text == "" || !new Regex("^[-+]?\\d+(\\.\\d+)?$").IsMatch(txtCourseFees.Text))
+            {
+                errorProvider1.SetError(txtCourseFees, "Enter valid amount");
+            }
+            else
+            {
+                try
+                {
+                    String query = "insert into feestruct(course,course_fee) values('" + txtCourseName.Text + "','" + txtCourseFees.Text + "');";
+                    MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
+                    mycommand.ExecuteNonQuery();
+                    refreshDataGridview();
+                    MessageBox.Show("Course/Class Added successfully..!");
+                    txtCourseFees.Text = "";
+                    txtCourseName.Text = "";
+                    comboBoxCourses.Items.Clear();
+                    addComboItem();
+
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee.Message);
+                }
+            }
+        }
+
+        private void metroButton1_Click_2(object sender, EventArgs e)
+        {
+            if (comboBoxCourses.Text != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Sure to Remove Course ?", "Remove Course From Database", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        String query = "delete from feestruct where course='" + comboBoxCourses.SelectedItem + "';";
+                        MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
+                        mycommand.ExecuteNonQuery();
+                        MessageBox.Show("Course Deleted successfully..!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        comboBoxCourses.Items.Clear();
+                        refreshDataGridview();
+                        addComboItem();
+                    }
+                    catch (Exception d)
+                    {
+                        MessageBox.Show(d.Message);
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select Course", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

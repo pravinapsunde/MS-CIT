@@ -59,12 +59,11 @@
             this.txtKey.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtKey.CustomButton.UseSelectable = true;
             this.txtKey.CustomButton.Visible = false;
-            this.txtKey.Lines = new string[] {
-        "LINKER-99-IT-44-SOLUTIONS-66666"};
+            this.txtKey.Lines = new string[0];
             this.txtKey.Location = new System.Drawing.Point(120, 76);
             this.txtKey.MaxLength = 32767;
             this.txtKey.Name = "txtKey";
-            this.txtKey.PasswordChar = '\0';
+            this.txtKey.PasswordChar = '#';
             this.txtKey.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtKey.SelectedText = "";
             this.txtKey.SelectionLength = 0;
@@ -72,7 +71,6 @@
             this.txtKey.ShortcutsEnabled = true;
             this.txtKey.Size = new System.Drawing.Size(323, 23);
             this.txtKey.TabIndex = 1;
-            this.txtKey.Text = "LINKER-99-IT-44-SOLUTIONS-66666";
             this.txtKey.UseSelectable = true;
             this.txtKey.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKey.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);

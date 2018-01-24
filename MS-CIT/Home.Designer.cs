@@ -41,20 +41,22 @@
             this.time_lbl = new MetroFramework.Controls.MetroLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.feeStructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txtSearch = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroTile7 = new MetroFramework.Controls.MetroTile();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile6 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -81,26 +83,27 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 7;
+            this.tableLayoutPanel2.ColumnCount = 8;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.tableLayoutPanel2.Controls.Add(this.metroTile7, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroTile3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroTile6, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroTile2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroTile4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroTile1, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.metroTile5, 6, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 24);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1254, 84);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -226,10 +229,33 @@
             this.homeToolStripMenuItem.Text = "Home";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 25);
+            this.usersToolStripMenuItem.Text = "Users";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.feeStructureToolStripMenuItem});
+            this.feeStructureToolStripMenuItem,
+            this.addBachesToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 25);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -293,27 +319,12 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
             // 
-            // usersToolStripMenuItem
+            // addBachesToolStripMenuItem
             // 
-            this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 25);
-            this.usersToolStripMenuItem.Text = "Users";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.addBachesToolStripMenuItem.Name = "addBachesToolStripMenuItem";
+            this.addBachesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addBachesToolStripMenuItem.Text = "Add Baches";
+            this.addBachesToolStripMenuItem.Click += new System.EventHandler(this.addBachesToolStripMenuItem_Click);
             // 
             // metroTile7
             // 
@@ -443,9 +454,9 @@
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(114, 78);
             this.metroTile1.TabIndex = 5;
-            this.metroTile1.Text = "Status";
+            this.metroTile1.Text = "Batche\'s";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile1.TileImage = global::MS_CIT.Properties.Resources.if_Money_Graph_379375;
+            this.metroTile1.TileImage = global::MS_CIT.Properties.Resources.if_MySpace_131603;
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
             this.metroTile1.UseCustomBackColor = true;
@@ -453,6 +464,29 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
+            // metroTile5
+            // 
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile5.BackColor = System.Drawing.Color.Gainsboro;
+            this.metroTile5.ForeColor = System.Drawing.Color.Black;
+            this.metroTile5.Location = new System.Drawing.Point(723, 3);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(114, 78);
+            this.metroTile5.TabIndex = 6;
+            this.metroTile5.Text = "Status";
+            this.metroTile5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile5.TileImage = global::MS_CIT.Properties.Resources.if_Money_Graph_379375;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile5.UseCustomBackColor = true;
+            this.metroTile5.UseCustomForeColor = true;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
             // Home
             // 
@@ -509,5 +543,7 @@
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addBachesToolStripMenuItem;
+        private MetroFramework.Controls.MetroTile metroTile5;
     }
 }

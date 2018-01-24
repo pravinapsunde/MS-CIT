@@ -43,8 +43,7 @@ namespace MS_CIT
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            BusinessStatus bs = new BusinessStatus();
-            bs.ShowDialog();
+           
         }
 
         private void feeStructureToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -75,6 +74,18 @@ namespace MS_CIT
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {            
+        }
+
+        private void addBachesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddBatches ad = new MS_CIT.AddBatches();
+            ad.ShowDialog();
+        }
+
+        private void metroTile5_Click(object sender, EventArgs e)
+        {
+            BusinessStatus bs = new BusinessStatus();
+            bs.ShowDialog();
         }
 
         void tmr_Tick(object sender, EventArgs e)
@@ -121,7 +132,7 @@ namespace MS_CIT
             try
             {
                 MySqlDataAdapter mySqlDataAdapter;
-                mySqlDataAdapter = new MySqlDataAdapter("select id as 'ID', f_name as 'First Name',m_name as 'Middle Name', s_name as 'Suranme',s_address as 'Address', gender as 'Gender',student_mob as 'Student Mob.No.',parent_mob as 'Parent Mob.No.',course as 'Course Name',course_fee as 'Allocated fees',paid_fee as 'Paid Fees',(cast(course_fee as decimal) - cast(paid_fee as decimal) ) as 'Balance Fee',admission_date as 'Admission Date',dateofbirth as 'BirthDate',p_occupation as 'Parent Occupation',college_name as 'School/College Name' from student;", Utility.GetConnection());
+                mySqlDataAdapter = new MySqlDataAdapter("select id as 'ID', f_name as 'First Name',m_name as 'Middle Name', s_name as 'Suranme',s_address as 'Address', gender as 'Gender',student_mob as 'Student Mob.No.',parent_mob as 'Parent Mob.No.',course as 'Course Name',course_fee as 'Allocated fees',paid_fee as 'Paid Fees',(cast(course_fee as decimal) - cast(paid_fee as decimal) ) as 'Balance Fee',admission_date as 'Admission Date', academic_year as 'Academic Year',dateofbirth as 'BirthDate',p_occupation as 'Parent Occupation',college_name as 'School/College Name' from student;", Utility.GetConnection());
                 DataSet DS = new DataSet();
                 mySqlDataAdapter.Fill(DS);
                 metroGrid1.DataSource = DS.Tables[0];

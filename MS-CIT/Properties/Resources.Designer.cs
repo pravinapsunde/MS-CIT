@@ -184,6 +184,16 @@ namespace MS_CIT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_MySpace_131603 {
+            get {
+                object obj = ResourceManager.GetObject("if_MySpace_131603", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_paypal_circle_683971 {
             get {
                 object obj = ResourceManager.GetObject("if_paypal_circle_683971", resourceCulture);

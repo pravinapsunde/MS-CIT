@@ -56,6 +56,8 @@
             this.lblAllocatedFees = new MetroFramework.Controls.MetroLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.ComboBoxAcademicYear = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,13 +65,12 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(627, 466);
+            this.btnSave.Location = new System.Drawing.Point(658, 471);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 30);
+            this.btnSave.Size = new System.Drawing.Size(74, 24);
             this.btnSave.Style = MetroFramework.MetroColorStyle.Green;
             this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Save";
-            this.btnSave.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnSave.Text = "Submit";
             this.btnSave.UseCustomBackColor = true;
             this.btnSave.UseCustomForeColor = true;
             this.btnSave.UseSelectable = true;
@@ -506,9 +507,9 @@
             // 
             this.metroButton1.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(627, 423);
+            this.metroButton1.Location = new System.Drawing.Point(564, 471);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(85, 30);
+            this.metroButton1.Size = new System.Drawing.Size(74, 24);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroButton1.TabIndex = 14;
             this.metroButton1.Text = "Close";
@@ -519,11 +520,33 @@
             this.metroButton1.UseStyleColors = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
             // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(396, 31);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(103, 19);
+            this.metroLabel12.TabIndex = 25;
+            this.metroLabel12.Text = "Acadamic Year :";
+            // 
+            // ComboBoxAcademicYear
+            // 
+            this.ComboBoxAcademicYear.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.ComboBoxAcademicYear.FormattingEnabled = true;
+            this.ComboBoxAcademicYear.ItemHeight = 19;
+            this.ComboBoxAcademicYear.Location = new System.Drawing.Point(500, 29);
+            this.ComboBoxAcademicYear.Name = "ComboBoxAcademicYear";
+            this.ComboBoxAcademicYear.Size = new System.Drawing.Size(238, 25);
+            this.ComboBoxAcademicYear.TabIndex = 26;
+            this.ComboBoxAcademicYear.UseSelectable = true;
+            // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 512);
+            this.ClientSize = new System.Drawing.Size(747, 508);
+            this.Controls.Add(this.ComboBoxAcademicYear);
+            this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.lblAllocatedFees);
             this.Controls.Add(this.metroLabel11);
@@ -552,7 +575,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Name = "AddStudent";
             this.Style = MetroFramework.MetroColorStyle.Default;
-            this.Text = "AddStudent";
+            this.Text = "Add Student";
             this.Load += new System.EventHandler(this.AddStudent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -589,5 +612,7 @@
         private MetroFramework.Controls.MetroLabel lblAllocatedFees;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroComboBox ComboBoxAcademicYear;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
     }
 }

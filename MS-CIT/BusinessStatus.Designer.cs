@@ -49,9 +49,9 @@
             // 
             this.metroButton1.BackColor = System.Drawing.SystemColors.Desktop;
             this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(232, 395);
+            this.metroButton1.Location = new System.Drawing.Point(240, 389);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(85, 30);
+            this.metroButton1.Size = new System.Drawing.Size(64, 25);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroButton1.TabIndex = 0;
             this.metroButton1.Text = "Close";
@@ -76,7 +76,7 @@
             this.panel1.Controls.Add(this.lblTotalAllocated);
             this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Controls.Add(this.metroLabel5);
-            this.panel1.Location = new System.Drawing.Point(25, 61);
+            this.panel1.Location = new System.Drawing.Point(12, 61);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(292, 317);
             this.panel1.TabIndex = 1;
@@ -249,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 444);
+            this.ClientSize = new System.Drawing.Size(322, 423);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroButton1);
             this.Name = "BusinessStatus";

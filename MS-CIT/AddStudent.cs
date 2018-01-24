@@ -137,14 +137,14 @@ namespace MS_CIT
             {
                 errorProvider1.SetError(datet_admission, null);
 
-                if (btnSave.Text == "Save")
+                if (btnSave.Text == "Submit")
                 {
                     try
                     {
-                        String query = "insert into student(f_name, m_name, s_name, s_address, gender, p_occupation, student_mob, parent_mob, dateofbirth, college_name, course, course_fee, admission_date) values('"
+                        String query = "insert into student(f_name, m_name, s_name, s_address, gender, p_occupation, student_mob, parent_mob, dateofbirth, college_name, course, course_fee, admission_date, academic_year) values('"
                             + txtfname.Text + "','" + txtmname.Text + "','" + txtsurname.Text + "','" + txtaddress.Text + "','"
                             + ComboBoxGender.Text + "','" + txtp_occupation.Text + "','" + txt_s_mob.Text + "','" + txtP_mob.Text + "','"
-                            + datetdob.Text + "','" + txtCollege.Text + "','" + comboadmission.Text + "','"
+                            + datetdob.Text + "','" + txtCollege.Text + "','" + comboadmission.Text + "','" + ComboBoxAcademicYear.Text + "','"
                             + lblAllocatedFees.Text + "','" + datet_admission.Text + "');";
                         MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
                         mycommand.ExecuteNonQuery();
@@ -205,8 +205,27 @@ namespace MS_CIT
         {
             datet_admission.Text = "";
             datetdob.Text = "";
-            // AddComboItem();           
+            AddBatchItems();           
         }
+
+        private void AddBatchItems()
+        {
+            DataTable dtPosts = new DataTable();
+            using (Utility.GetConnection())
+            {
+                using (mySqlDataAdapter = new MySqlDataAdapter("SELECT batch FROM batches", Utility.GetConnection()))
+                {
+                    mySqlDataAdapter.Fill(dtPosts);
+                }
+            }
+            //use LINQ method syntax to pull the Title field from a DT into a string array...
+            string[] batch = dtPosts
+                                .AsEnumerable()
+                                .Select<System.Data.DataRow, String>(x => x.Field<String>("batch"))
+                                .ToArray();           
+            ComboBoxAcademicYear.Items.AddRange(batch);
+        }
+
         private void comboadmission_ValueMemberChanged(object sender, EventArgs e)
         {
 
