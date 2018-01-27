@@ -95,9 +95,7 @@ namespace MS_CIT
             {
                 throw;
             }
-
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtAmount.Text == "" || !new Regex("^[-+]?\\d+(\\.\\d+)?$").IsMatch(txtAmount.Text))
@@ -210,7 +208,6 @@ namespace MS_CIT
             PrinterSettings ps = new PrinterSettings();
             Font font = new Font("Courier New", 15);
 
-
             PaperSize psize = new PaperSize("Custom", 100, 200);
             //ps.DefaultPageSettings.PaperSize = psize;
 
@@ -235,7 +232,6 @@ namespace MS_CIT
                 }
             }
         }
-
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             Graphics graphics = e.Graphics;
@@ -250,6 +246,12 @@ namespace MS_CIT
             graphics.DrawString("Ticket No:" + this.strAmount,
                      new Font("Courier New", 14),
                      new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            graphics.DrawString("Ticket No:" + this.strAmount,
+                     new Font("Courier New", 14),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
             Offset = Offset + 20;
             graphics.DrawString("Ticket Date :" + this.strAmount,
                      new Font("Courier New", 12),

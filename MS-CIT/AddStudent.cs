@@ -19,12 +19,13 @@ namespace MS_CIT
     public partial class AddStudent : MetroForm
     {
         string id = "";
-        Regex expr = null;
+        //Regex expr = null;
         MySqlDataAdapter mySqlDataAdapter;
         public AddStudent()
         {
             InitializeComponent();
             AddComboItem();
+            AddBatchItems();
         }
         Home home1 = (Home)Application.OpenForms["Home"];
         private Home mainForm = null;
@@ -34,36 +35,37 @@ namespace MS_CIT
             InitializeComponent();
         }
 
-        public void setUpdatedValues(string value1, string value2, string value3, string value4, string value5, string value6, string value7, string value8, string value9, string value10, string value11, string value12, string value13, string value14)
+        public void setUpdatedValues(string value0, string value1, string value2, string value3, string value4, string value5, string value6, string value7, string value8, string value9, string value10, string value11, string value12, string value13, string value14)
         {
             try
             {
-                id = value1;
-                txtfname.Text = value2;
-                txtmname.Text = value3;
-                txtsurname.Text = value4;
-                txtaddress.Text = value5;
-                ComboBoxGender.Text = value6;
-                txtp_occupation.Text = value7;
-                txt_s_mob.Text = value8;
-                txtP_mob.Text = value9;
-                if (value10 == "" && value12 == "")
+                id = value0;
+                txtfname.Text = value1;
+                txtmname.Text = value2;
+                txtsurname.Text = value3;
+                txtaddress.Text = value4;
+                ComboBoxGender.Text = value5;
+                txtp_occupation.Text = value11;
+                txt_s_mob.Text = value6;
+                txtP_mob.Text = value7;
+                if (value13 == "" && value14 == "")
                 {
                     datetdob.Text = "";
                     datet_admission.Text = "";
                 }
                 else
                 {
-                    datetdob.Value = DateTime.ParseExact(value10, "dd-MM-yyyy", null);
+                    datetdob.Value = DateTime.ParseExact(value13, "dd-MM-yyyy", null);
                     datet_admission.Value = DateTime.ParseExact(value14, "dd-MM-yyyy", null);
                 }
-                txtCollege.Text = value11;
-                DataTable dtPosts = new DataTable();               
-                comboadmission.Text = value12;
-                lblAllocatedFees.Text = value13;
+                int index = ComboBoxAcademicYear.FindString(value8);                               
+                ComboBoxAcademicYear.SelectedIndex=index;              
+                txtCollege.Text = value12;               
+                comboadmission.Text = value9;
+                lblAllocatedFees.Text = value10;
                 value1 = ""; value2 = ""; value3 = ""; value4 = ""; value5 = ""; value6 = "";
                 value7 = ""; value8 = ""; value9 = ""; value10 = ""; value11 = ""; value12 = "";
-                value13 = ""; value14 = "";
+                value13 = ""; value14 = ""; value0 = "";
             }
             catch (Exception ee)
             {
@@ -72,8 +74,13 @@ namespace MS_CIT
         }
         public void metroButton2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtfname.Text) || !new Regex("^[a-zA-Z\\s]+$").IsMatch(txtfname.Text))
+            if (string.IsNullOrEmpty(ComboBoxAcademicYear.Text))
             {
+                errorProvider1.SetError(ComboBoxAcademicYear, "Select Academic Year");
+            }
+            else if (string.IsNullOrEmpty(txtfname.Text) || !new Regex("^[a-zA-Z\\s]+$").IsMatch(txtfname.Text))
+            {
+                errorProvider1.SetError(ComboBoxAcademicYear, null);
                 errorProvider1.SetError(txtfname, "Please enter valid Name");
             }
             else if (string.IsNullOrEmpty(txtmname.Text) || !new Regex("^[a-zA-Z\\s]+$").IsMatch(txtmname.Text))
@@ -144,8 +151,8 @@ namespace MS_CIT
                         String query = "insert into student(f_name, m_name, s_name, s_address, gender, p_occupation, student_mob, parent_mob, dateofbirth, college_name, course, course_fee, admission_date, academic_year) values('"
                             + txtfname.Text + "','" + txtmname.Text + "','" + txtsurname.Text + "','" + txtaddress.Text + "','"
                             + ComboBoxGender.Text + "','" + txtp_occupation.Text + "','" + txt_s_mob.Text + "','" + txtP_mob.Text + "','"
-                            + datetdob.Text + "','" + txtCollege.Text + "','" + comboadmission.Text + "','" + ComboBoxAcademicYear.Text + "','"
-                            + lblAllocatedFees.Text + "','" + datet_admission.Text + "');";
+                            + datetdob.Text + "','" + txtCollege.Text + "','" + comboadmission.Text + "','"
+                            + lblAllocatedFees.Text + "','" + datet_admission.Text + "','" + ComboBoxAcademicYear.Text + "');";
                         MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
                         mycommand.ExecuteNonQuery();
                         long id = mycommand.LastInsertedId;
@@ -169,7 +176,7 @@ namespace MS_CIT
                                 + txtsurname.Text + "', s_address='" + txtaddress.Text + "', gender ='" + ComboBoxGender.SelectedItem +
                                 "', p_occupation='" + txtp_occupation.Text + "', student_mob =" + txt_s_mob.Text + ", parent_mob ="
                                 + txtP_mob.Text + ", dateofbirth ='" + datetdob.Text + "', college_name ='" + txtCollege.Text +
-                                "', course ='" + comboadmission.Text + "', course_fee ='" + lblAllocatedFees.Text + "', admission_date ='" + datet_admission.Text + "' where id = '" + Convert.ToInt16(id) + "';";
+                                "', course ='" + comboadmission.Text + "', course_fee ='" + lblAllocatedFees.Text + "', admission_date ='" + datet_admission.Text + "', academic_year ='" + ComboBoxAcademicYear.Text + "' where id = '" + Convert.ToInt16(id) + "';";
                         MySqlCommand mycommand = new MySqlCommand(query, Utility.GetConnection());
                         mycommand.ExecuteNonQuery();
                         MessageBox.Show("Student Updated successfully..!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -202,14 +209,14 @@ namespace MS_CIT
         }
 
         private void AddStudent_Load(object sender, EventArgs e)
-        {
-            datet_admission.Text = "";
-            datetdob.Text = "";
-            AddBatchItems();           
+        {           
+            datetdob.Text = "";           
+            comboadmission.SelectedItem = "";
         }
 
         private void AddBatchItems()
         {
+            ComboBoxAcademicYear.Items.Add("");
             DataTable dtPosts = new DataTable();
             using (Utility.GetConnection())
             {
@@ -222,7 +229,7 @@ namespace MS_CIT
             string[] batch = dtPosts
                                 .AsEnumerable()
                                 .Select<System.Data.DataRow, String>(x => x.Field<String>("batch"))
-                                .ToArray();           
+                                .ToArray();
             ComboBoxAcademicYear.Items.AddRange(batch);
         }
 

@@ -123,16 +123,18 @@ namespace MS_CIT
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            if (txtCourseName.Text == "")
+            if (string.IsNullOrEmpty(txtCourseName.Text) || !new Regex("^[a-zA-Z\\s]+$").IsMatch(txtCourseName.Text))
             {
-                errorProvider1.SetError(txtCourseName, "Enter Course Name");
+                errorProvider1.SetError(txtCourseName, "Enter Valid Course Name");
             }
-            else if (txtCourseFees.Text == "" || !new Regex("^[-+]?\\d+(\\.\\d+)?$").IsMatch(txtCourseFees.Text))
+            else if (string.IsNullOrEmpty(txtCourseFees.Text) || !new Regex("^[-+]?\\d+(\\.\\d+)?$").IsMatch(txtCourseFees.Text))
             {
-                errorProvider1.SetError(txtCourseFees, "Enter valid amount");
+                errorProvider1.SetError(txtCourseName, null);
+                errorProvider1.SetError(txtCourseFees, "Enter Valid Amount");
             }
             else
             {
+                errorProvider1.SetError(txtCourseFees, null);
                 try
                 {
                     String query = "insert into feestruct(course,course_fee) values('" + txtCourseName.Text + "','" + txtCourseFees.Text + "');";
@@ -183,6 +185,16 @@ namespace MS_CIT
             {
                 MessageBox.Show("Select Course", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtCourseName_TextChanged_1(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(txtCourseName,null);
+        }
+
+        private void txtCourseFees_TextChanged_1(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(txtCourseFees, null);
         }
     }
 }

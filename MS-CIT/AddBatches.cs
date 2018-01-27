@@ -45,7 +45,7 @@ namespace MS_CIT
         }
         private void gridviewBatch()
         {
-            mySqlDataAdapter = new MySqlDataAdapter("select batch as 'Batch' from batches;", Utility.GetConnection());
+            mySqlDataAdapter = new MySqlDataAdapter("select batch as 'Academic Batch' from batches;", Utility.GetConnection());
             DataSet DS = new DataSet();
             mySqlDataAdapter.Fill(DS);
             metroGrid1.DataSource = DS.Tables[0];
@@ -67,7 +67,7 @@ namespace MS_CIT
             else if (txtEndMonth.Text == "")
             {
                 errorProvider1.SetError(txtStartYear, null);
-                errorProvider1.SetError(txtStartYear, "Select End Month");
+                errorProvider1.SetError(txtEndMonth, "Select End Month");
             }
             else if (txtEndYear.Text == "")
             {
@@ -76,24 +76,26 @@ namespace MS_CIT
             }
             else
             {
+                errorProvider1.SetError(txtEndYear, null);
                 try
                 {
-                    String query = "insert into batches(batch) values('" + txtStartMonth.Text + "." + txtStartYear.Text + "-" + txtEndMonth.Text + "." + txtEndYear.Text + "');";
+                    String query = "insert into batches(batch) values('" + txtStartMonth.Text + "_" + txtStartYear.Text + "-" + txtEndMonth.Text + "_" + txtEndYear.Text + "');";
                     mycommand = new MySqlCommand(query, Utility.GetConnection());
                     int a = mycommand.ExecuteNonQuery();
                     if (a > 0)
                     {
                         MessageBox.Show("Batch Added successfully..!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        gridviewBatch();
+                        gridviewBatch(); 
                         txtEndMonth.Text = "";
                         txtEndYear.Text = "";
                         txtStartMonth.Text = "";
-                        txtStartYear.Text = "";
+                        txtStartYear.Text = "";                      
                     }
                     else
                     {
                         MessageBox.Show("Batch not added..!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    
                 }
                 catch (Exception ee)
                 {
@@ -101,7 +103,6 @@ namespace MS_CIT
                 }
             }
         }
-
         private void metroButton1_Click(object sender, EventArgs e)
         {
             if (metroComboBox1.Text != "")
@@ -124,7 +125,6 @@ namespace MS_CIT
                         {
                             MessageBox.Show("Batch not removed..!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
                     }
                     catch (Exception d)
                     {
@@ -145,6 +145,10 @@ namespace MS_CIT
         {
             metroComboBox1.Items.Clear();
             addAcademicYearItems();
+        }
+        private void metroTabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

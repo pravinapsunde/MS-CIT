@@ -74,7 +74,7 @@ namespace MS_CIT
                         }
                     }
                 }
-                catch (System.FormatException rr)
+                catch (System.FormatException)
                 {
                     MessageBox.Show("Application can't run because system date was changed \n Please set it as automatic(or internet time )");
                 }

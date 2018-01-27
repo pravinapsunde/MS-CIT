@@ -65,9 +65,9 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(658, 471);
+            this.btnSave.Location = new System.Drawing.Point(658, 461);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(74, 24);
+            this.btnSave.Size = new System.Drawing.Size(74, 28);
             this.btnSave.Style = MetroFramework.MetroColorStyle.Green;
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Submit";
@@ -80,11 +80,12 @@
             // 
             this.datet_admission.CustomFormat = "dd-MM-yyyy";
             this.datet_admission.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.datet_admission.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.datet_admission.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datet_admission.Location = new System.Drawing.Point(150, 467);
-            this.datet_admission.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datet_admission.Location = new System.Drawing.Point(150, 470);
+            this.datet_admission.MinimumSize = new System.Drawing.Size(0, 25);
             this.datet_admission.Name = "datet_admission";
-            this.datet_admission.Size = new System.Drawing.Size(183, 29);
+            this.datet_admission.Size = new System.Drawing.Size(184, 25);
             this.datet_admission.Style = MetroFramework.MetroColorStyle.Silver;
             this.datet_admission.TabIndex = 12;
             this.datet_admission.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -114,7 +115,7 @@
             this.txtp_occupation.CustomButton.UseSelectable = true;
             this.txtp_occupation.CustomButton.Visible = false;
             this.txtp_occupation.Lines = new string[0];
-            this.txtp_occupation.Location = new System.Drawing.Point(151, 243);
+            this.txtp_occupation.Location = new System.Drawing.Point(150, 246);
             this.txtp_occupation.MaxLength = 32767;
             this.txtp_occupation.Name = "txtp_occupation";
             this.txtp_occupation.PasswordChar = '\0';
@@ -141,11 +142,14 @@
             // 
             // comboadmission
             // 
+            this.comboadmission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboadmission.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.comboadmission.FormattingEnabled = true;
-            this.comboadmission.ItemHeight = 23;
-            this.comboadmission.Location = new System.Drawing.Point(150, 391);
+            this.comboadmission.ItemHeight = 19;
+            this.comboadmission.Location = new System.Drawing.Point(150, 394);
             this.comboadmission.Name = "comboadmission";
-            this.comboadmission.Size = new System.Drawing.Size(183, 29);
+            this.comboadmission.PromptText = "Select Course";
+            this.comboadmission.Size = new System.Drawing.Size(183, 25);
             this.comboadmission.TabIndex = 10;
             this.comboadmission.UseSelectable = true;
             this.comboadmission.ValueMemberChanged += new System.EventHandler(this.comboadmission_ValueMemberChanged);
@@ -178,7 +182,7 @@
             this.txtCollege.CustomButton.UseSelectable = true;
             this.txtCollege.CustomButton.Visible = false;
             this.txtCollege.Lines = new string[0];
-            this.txtCollege.Location = new System.Drawing.Point(151, 355);
+            this.txtCollege.Location = new System.Drawing.Point(150, 357);
             this.txtCollege.MaxLength = 32767;
             this.txtCollege.Name = "txtCollege";
             this.txtCollege.PasswordChar = '\0';
@@ -207,11 +211,12 @@
             // 
             this.datetdob.CustomFormat = "dd-MM-yyyy";
             this.datetdob.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.datetdob.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.datetdob.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetdob.Location = new System.Drawing.Point(151, 204);
-            this.datetdob.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetdob.Location = new System.Drawing.Point(150, 205);
+            this.datetdob.MinimumSize = new System.Drawing.Size(0, 25);
             this.datetdob.Name = "datetdob";
-            this.datetdob.Size = new System.Drawing.Size(183, 29);
+            this.datetdob.Size = new System.Drawing.Size(183, 25);
             this.datetdob.Style = MetroFramework.MetroColorStyle.Silver;
             this.datetdob.TabIndex = 5;
             this.datetdob.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -232,7 +237,7 @@
             this.txtP_mob.CustomButton.UseSelectable = true;
             this.txtP_mob.CustomButton.Visible = false;
             this.txtP_mob.Lines = new string[0];
-            this.txtP_mob.Location = new System.Drawing.Point(151, 317);
+            this.txtP_mob.Location = new System.Drawing.Point(150, 320);
             this.txtP_mob.MaxLength = 10;
             this.txtP_mob.Name = "txtP_mob";
             this.txtP_mob.PasswordChar = '\0';
@@ -338,7 +343,7 @@
             this.txt_s_mob.CustomButton.UseSelectable = true;
             this.txt_s_mob.CustomButton.Visible = false;
             this.txt_s_mob.Lines = new string[0];
-            this.txt_s_mob.Location = new System.Drawing.Point(151, 280);
+            this.txt_s_mob.Location = new System.Drawing.Point(150, 283);
             this.txt_s_mob.MaxLength = 10;
             this.txt_s_mob.Name = "txt_s_mob";
             this.txt_s_mob.PasswordChar = '\0';
@@ -467,16 +472,18 @@
             // 
             // ComboBoxGender
             // 
+            this.ComboBoxGender.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.ComboBoxGender.FormattingEnabled = true;
-            this.ComboBoxGender.ItemHeight = 23;
+            this.ComboBoxGender.ItemHeight = 19;
             this.ComboBoxGender.Items.AddRange(new object[] {
             "",
             "Male",
             "Female",
             "Other"});
-            this.ComboBoxGender.Location = new System.Drawing.Point(150, 167);
+            this.ComboBoxGender.Location = new System.Drawing.Point(150, 168);
             this.ComboBoxGender.Name = "ComboBoxGender";
-            this.ComboBoxGender.Size = new System.Drawing.Size(183, 29);
+            this.ComboBoxGender.PromptText = "Select Gender";
+            this.ComboBoxGender.Size = new System.Drawing.Size(183, 25);
             this.ComboBoxGender.TabIndex = 4;
             this.ComboBoxGender.UseSelectable = true;
             this.ComboBoxGender.TextChanged += new System.EventHandler(this.ComboBoxGender_TextChanged);
@@ -492,10 +499,9 @@
             // 
             // lblAllocatedFees
             // 
-            this.lblAllocatedFees.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblAllocatedFees.Location = new System.Drawing.Point(150, 429);
+            this.lblAllocatedFees.Location = new System.Drawing.Point(150, 431);
             this.lblAllocatedFees.Name = "lblAllocatedFees";
-            this.lblAllocatedFees.Size = new System.Drawing.Size(183, 29);
+            this.lblAllocatedFees.Size = new System.Drawing.Size(183, 24);
             this.lblAllocatedFees.TabIndex = 11;
             this.lblAllocatedFees.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -507,9 +513,9 @@
             // 
             this.metroButton1.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(564, 471);
+            this.metroButton1.Location = new System.Drawing.Point(572, 461);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(74, 24);
+            this.metroButton1.Size = new System.Drawing.Size(74, 28);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroButton1.TabIndex = 14;
             this.metroButton1.Text = "Close";
@@ -523,7 +529,7 @@
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(396, 31);
+            this.metroLabel12.Location = new System.Drawing.Point(443, 34);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(103, 19);
             this.metroLabel12.TabIndex = 25;
@@ -531,12 +537,14 @@
             // 
             // ComboBoxAcademicYear
             // 
+            this.ComboBoxAcademicYear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ComboBoxAcademicYear.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.ComboBoxAcademicYear.FormattingEnabled = true;
             this.ComboBoxAcademicYear.ItemHeight = 19;
-            this.ComboBoxAcademicYear.Location = new System.Drawing.Point(500, 29);
+            this.ComboBoxAcademicYear.Location = new System.Drawing.Point(554, 31);
             this.ComboBoxAcademicYear.Name = "ComboBoxAcademicYear";
-            this.ComboBoxAcademicYear.Size = new System.Drawing.Size(238, 25);
+            this.ComboBoxAcademicYear.PromptText = "Select Academic Year";
+            this.ComboBoxAcademicYear.Size = new System.Drawing.Size(183, 25);
             this.ComboBoxAcademicYear.TabIndex = 26;
             this.ComboBoxAcademicYear.UseSelectable = true;
             // 
@@ -544,7 +552,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 508);
+            this.ClientSize = new System.Drawing.Size(752, 508);
             this.Controls.Add(this.ComboBoxAcademicYear);
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroButton1);
@@ -575,7 +583,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Name = "AddStudent";
             this.Style = MetroFramework.MetroColorStyle.Default;
-            this.Text = "Add Student";
+            this.Text = "Create Student Profile";
             this.Load += new System.EventHandler(this.AddStudent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

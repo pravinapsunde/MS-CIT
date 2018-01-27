@@ -17,8 +17,10 @@ namespace MS_CIT
 {
     public partial class Home : MetroForm
     {
-        int ScreenHight, ScreenWidth, id;
-        string value1 = "", value2 = "", value3 = "", value4 = "", value5 = "", value6 = "", value7 = "", value8 = "", value9 = "", value10 = "", value11 = "", value12 = "", value13 = "", value14 = "";
+        int ScreenHight, ScreenWidth;
+        string value1 = "", value2 = "", value3 = "", value4 = "", value5 = "", value6 = "",
+                        value7 = "", value8 = "", value9 = "", value10 = "", value11 = "",
+                        value12 = "", value13 = "", value14 = "",value0="";
         MySqlDataAdapter mySqlDataAdapter;
 
         private void metroTile6_Click(object sender, EventArgs e)
@@ -92,6 +94,12 @@ namespace MS_CIT
         {
             time_lbl.Text = DateTime.Now.ToString();
         }
+
+        private void exitAltXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         public Home()
         {
             InitializeComponent();
@@ -132,7 +140,7 @@ namespace MS_CIT
             try
             {
                 MySqlDataAdapter mySqlDataAdapter;
-                mySqlDataAdapter = new MySqlDataAdapter("select id as 'ID', f_name as 'First Name',m_name as 'Middle Name', s_name as 'Suranme',s_address as 'Address', gender as 'Gender',student_mob as 'Student Mob.No.',parent_mob as 'Parent Mob.No.',course as 'Course Name',course_fee as 'Allocated fees',paid_fee as 'Paid Fees',(cast(course_fee as decimal) - cast(paid_fee as decimal) ) as 'Balance Fee',admission_date as 'Admission Date', academic_year as 'Academic Year',dateofbirth as 'BirthDate',p_occupation as 'Parent Occupation',college_name as 'School/College Name' from student;", Utility.GetConnection());
+                mySqlDataAdapter = new MySqlDataAdapter("select id as 'ID', f_name as 'First Name',m_name as 'Middle Name', s_name as 'Suranme',s_address as 'Address', gender as 'Gender',student_mob as 'Student Mob.No.',parent_mob as 'Parent Mob.No.', academic_year as 'Academic Year', course as 'Course Name',course_fee as 'Allocated fees',paid_fee as 'Paid Fees',(cast(course_fee as decimal) - cast(paid_fee as decimal) ) as 'Balance Fee',admission_date as 'Admission Date',dateofbirth as 'BirthDate',p_occupation as 'Parent Occupation',college_name as 'School/College Name' from student;", Utility.GetConnection());
                 DataSet DS = new DataSet();
                 mySqlDataAdapter.Fill(DS);
                 metroGrid1.DataSource = DS.Tables[0];
@@ -161,30 +169,31 @@ namespace MS_CIT
         }
         private void metroTile2_Click(object sender, EventArgs e)
         {
-
             if (metroGrid1.SelectedCells.Count > 0)
             {
                 foreach (DataGridViewRow row in metroGrid1.SelectedRows)
                 {
-                    value1 = row.Cells[0].Value.ToString();
-                    value2 = row.Cells[1].Value.ToString();
-                    value3 = row.Cells[2].Value.ToString();
-                    value4 = row.Cells[3].Value.ToString();
-                    value5 = row.Cells[4].Value.ToString();
-                    value6 = row.Cells[5].Value.ToString();
-                    value7 = row.Cells[14].Value.ToString();
-                    value8 = row.Cells[6].Value.ToString();
-                    value9 = row.Cells[7].Value.ToString();
-                    value10 = row.Cells[13].Value.ToString();
-                    value11 = row.Cells[15].Value.ToString();
-                    value12 = row.Cells[8].Value.ToString();
-                    value13 = row.Cells[9].Value.ToString();
-                    value14 = row.Cells[12].Value.ToString();
+                    value0= row.Cells[0].Value.ToString();
+                    value1= row.Cells[1].Value.ToString();
+                    value2= row.Cells[2].Value.ToString();
+                    value3= row.Cells[3].Value.ToString();
+                    value4= row.Cells[4].Value.ToString();
+                    value5= row.Cells[5].Value.ToString();
+                    value6= row.Cells[6].Value.ToString();
+                    value7= row.Cells[7].Value.ToString();
+                    value8= row.Cells[8].Value.ToString();
+                    value9 = row.Cells[9].Value.ToString();
+                    value10 = row.Cells[10].Value.ToString();
+                    value11 = row.Cells[15].Value.ToString();   //paid fee value11
+                    value12 = row.Cells[16].Value.ToString();   //balance fee value12
+                    value13 = row.Cells[13].Value.ToString();
+                    value14 = row.Cells[14].Value.ToString();
                 }
                 try
                 {
                     AddStudent ads = new AddStudent();
-                    ads.setUpdatedValues(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14);
+                    ads.Text = "Update Student Profile";                    
+                    ads.setUpdatedValues(value0,value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14);
                     ads.saveButtonControl = "Update";
                     ads.ShowDialog();
 
